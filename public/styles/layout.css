@@ -1,0 +1,23 @@
+body {
+    max-width: 767px;
+    margin: 0 auto;
+}
+
+@media (max-width: 767px) {
+    .container {
+        text-align: center;
+        margin: 0 auto;
+    }
+    .center {
+        align-items: center;
+    }
+    .flex{
+        display: flex;
+        align-items: center;
+    }
+    .flexCol{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+}

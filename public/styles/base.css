@@ -1,0 +1,41 @@
+@media  (max-width: 767px){
+    header{
+        height: 100px;
+        background-color: black;
+        color: white;
+        position: fixed;
+        width: 100%;
+    }
+    body{
+        background-color: gray;
+        color: white;
+    }
+    main{
+        /* position: fixed; or absolute */
+        padding-top: 300px;
+        /* left: 35%; */
+    }
+    /* main form input, main form .radio, main form button{
+        display: block;
+        text-align: center;
+    } */
+    footer{
+        height: 70px;
+        background-color: black;
+        color: white;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+    
+    
+}
+
+@media  (min-width: 768px){
+    body{
+        display: none;
+    }
+    #alert{
+        display: inline;
+    }
+}
