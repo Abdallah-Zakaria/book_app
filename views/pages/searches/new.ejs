@@ -1,43 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+    <%- include('../../layout/head') %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Books</title>
-    <link rel="icon" href="https://www.freeiconspng.com/uploads/book-icon--icon-search-engine-6.png" type="image/png"
-        sizes="16x16">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/styles/styles.css">
-    <script>
-        function menu() {
-            var x = document.getElementById("myLinks");
-            if (x.style.display === "block") {
-                x.style.display = "none";
-            } else {
-                x.style.display = "block";
-            }
-        }
-    </script>
-</head>
 
 <body>
-    <header>
-        <div class="center topnav">
-            <h1>Best Books!</h1>
-            
-            <div id="myLinks">
-                <a href="/"><p >Home</p></a>
-                <a href="#" class="active"><p class="active">Search the Google Books API</p></a>
-            </div>
-            <a href="javascript:void(0);" class="icon" onclick="menu()">
-                <i class="fa fa-bars fa-4x"></i>
-            </a>
-            <div class="title">
-                <p>Search by Title or Author</p>
-            </div>
-        </div>
-    </header>
+
+    <%- include('../../layout/header') %>
+    
     <main>
         <div class="container">
             <form action="/searches" method="POST">
@@ -54,14 +23,8 @@
             </form>
         </div>
     </main>
-    <footer>
-        <ul>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-        </ul>
-    </footer>
+    <%- include('../../layout/footer') %>
+
 </body>
 
 </html>
