@@ -1,0 +1,19 @@
+<section id="updateForm">
+    <form action="/books/<%=data.id%>?_method=put" method="post">
+        <input type="text" name="title" id="" value="<%= data.title%>">
+        <input type="text" name="author" id="" value="<%= data.author  %>">
+        <input type="text" name="isbn" id="" value="<%= data.isbn %>">
+        <input type="text" name="image_url" id="" value="<%=data.image_url%>">
+        <textarea  name="description" cols="30" rows="10" value="<%=data.description%>"><%=data.description%></textarea>
+        <select value="ffff" name="bookshelf">
+            <option selected value="<%=data.bookshelf%>"><%=data.bookshelf%></option>
+            <% data2.forEach(item =>{ %>
+                <%if(item.bookshelf != data.bookshelf){%>
+                    <option value="<%= item.bookshelf%>"><%= item.bookshelf%></option>
+                    <%}%>
+            <% }) %>
+
+        </select>
+        <button>Update</button>
+    </form>
+</section>
