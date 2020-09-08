@@ -5,4 +5,10 @@
     <p><%= data.description  %></p>
     <p>ISBN :<%= data.isbn %></p>
     <p>Bookshelf:<%= data.bookShell %></p>
+    <button id="updateBtn">Update Form</button>
+    <form action="/books/<%= data.id%>?_method=delete" method="post">
+        <button>Delete Form</button>
+    </form>
+
+
 </section>
