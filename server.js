@@ -18,30 +18,35 @@ app.use((methodOverride("_method")))
 const client = new pg.Client(process.env.DATABASE_URL);
 
 let arrayBooks = [];
-let bookshelfArray = []
+
 
 app.get('/', homePage);
 app.get('/searches/new', newSearches);
 app.get('/hello', testPage)
 app.post('/searches', search);
 app.get('/searches/show', showSearch)
-app.get("/books/:id", savedBooks)
-app.post("/books", addSeavedToDb)
-app.put("/books/:id", updateBook)
-app.delete("/books/:id", deleteBook)
+app.get("/books/:id", viewDetailsBook)
+app.post("/books", addBookToDB)
+app.put("/books/:id", updateBookDetails)
+app.delete("/books/:id", deleteBookFromDB)
+app.get('/error', ((req, res) => {
+    res.render('pages/error');
+}))
 
 function homePage(req, res) {
     let SQL = `SELECT * FROM books;`
     client.query(SQL)
         .then(result => {
-            // console.log(result)
             res.render("pages/index", { data: result.rows });
         })
-    // res.render("pages/index")
+        .catch(() => {
+            let whyNotWork = "Can't load database";
+            console.log(whyNotWork)
+            res.status(500).render("pages/error", { data: whyNotWork });
+        })
 }
 
 function newSearches(req, res) {
-    // console.log(res.body);
     res.render('pages/searches/new')
 }
 
@@ -55,12 +60,12 @@ async function search(req, res) {
             result.body.items.forEach(item => {
                 new Book(item);
             })
-            // console.log(arrayBooks);
             res.redirect("searches/show");
         })
-        .catch(error => {
-            console.log("Error | Can't find any data about your search.")
-            res.status(500).redirect("pages/error")
+        .catch(() => {
+            let whyNotWork ="Can't find any data about your search."
+            console.log(whyNotWork)
+            res.status(500).redirect("pages/error" , {data : whyNotWork})
         })
 
 }
@@ -69,25 +74,28 @@ function showSearch(req, res) {
     res.render("pages/searches/show", { data: arrayBooks })
 }
 
-async function savedBooks(req, res) {
-    bookshelfArray = []
+async function viewDetailsBook(req, res) {
+    let bookshelfArray = []
     let idSelected = req.params.id;
     let SQL1 = `SELECT * FROM books WHERE id =$1 `
     let SQL2 = `SELECT DISTINCT bookshelf FROM books`
     let values1 = [idSelected]
     await client.query(SQL2)
         .then((result1) => {
-            // console.log(result1.rows.length)
             bookshelfArray = result1.rows;
         })
-    // console.log(bookshelfArray)
     client.query(SQL1, values1)
         .then(result2 => {
             res.render("pages/books/show", { data: result2.rows[0], data2: bookshelfArray })
         })
+        .catch(() => {
+            let whyNotWork = "Can't load details.";
+            console.log(whyNotWork);
+            res.status(500).render("pages/error", { data: whyNotWork });
+        })
 }
 
-function addSeavedToDb(req, res) {
+function addBookToDB(req, res) {
     let indexOfBook = req.body.key
     let bookSelect = arrayBooks[indexOfBook]
 
@@ -104,10 +112,18 @@ function addSeavedToDb(req, res) {
                     let id = result.rows[0].id
                     res.redirect(`/books/${id}`);
                 })
+                .catch(() => {
+                    let whyNotWork = "Can't update details of the book."
+                    console.log(whyNotWork);
+                    res.status(500).render("pages/error", { data: whyNotWork });
+                })
+        })
+        .catch(() => {
+            console.log("Bookshelf already in DB.")
         })
 }
 
-function updateBook(req, res) {
+function updateBookDetails(req, res) {
     let index = req.params.id
     let { author, title, isbn, image_url, description, bookshelf } = req.body;
     let SQL = `UPDATE books SET author=$1,title=$2,isbn=$3,image_url=$4,description=$5,bookshelf=$6 WHERE id=$7;`
@@ -116,15 +132,25 @@ function updateBook(req, res) {
         .then(() => {
             res.redirect(`/books/${index}`)
         })
+        .catch(error => {
+            let whyNotWork = "Can't update details of the book."
+            console.log(whyNotWork);
+            res.status(500).render("pages/error", { data: whyNotWork });
+        })
 }
 
-function deleteBook(req, res) {
+function deleteBookFromDB(req, res) {
     let index = req.params.id
     let SQL = `DELETE FROM books WHERE id=$1;`
     let values = [index];
     client.query(SQL, values)
         .then(() => {
             res.redirect('/')
+        })
+        .catch(() => {
+            let whyNotWork = "Can't delete book."
+            console.log(whyNotWork);
+            res.status(500).render("pages/error", { data: whyNotWork });
         })
 }
 

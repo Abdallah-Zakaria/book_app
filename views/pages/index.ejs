@@ -6,15 +6,21 @@
 <body>
     <%- include('../layout/header') %>
     <main>
-        <p>Total books save: <%= data.length%></p>
+        <div class="title">
+            <p><strong id="savedBooks"><%= data.length %></strong> Saved Books</p>
+        </div>
         <% data.forEach(item =>{ %>
-        <img src="<%= item.image_url %>" alt="">
-        <h3> <%= item.title %> </h3>
-        <h4><%= item.author %></h4>
-        <a href="books/<%=item.id%>">View Details</a>
+        <div class="show container flexCol">
+            <img src="<%= item.image_url %>" alt="">
+            <h1> <%= item.title %> </h1>
+            <h3><%= item.author %></h3>
+            <form class="postForm" action="/books/<%=item.id%>" method="get">
+                <button id="detailsButton">View Details</button>
+            </form>
+        </div>
         <% })%>
     </main>
 </body>
-    <%- include('../layout/footer') %>
+<%- include('../layout/footer') %>
 
 </html>

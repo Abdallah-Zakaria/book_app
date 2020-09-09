@@ -1,0 +1,138 @@
+@media (max-width: 767px) {
+    .form-container {
+        max-width: 100%;
+        height: 100%;
+        padding: 10px;
+        background-color: white;
+        box-sizing: border-box;
+        margin-bottom: 80px;
+    }
+    
+    .updateForm {
+        width: 85%;
+        height: 70%;
+        display: none;
+        position: fixed;
+        margin: 0 auto;
+        top: 120px;
+        border-radius: 3px;
+        border: 3px solid goldenrod;
+        overflow: scroll;
+        margin-bottom: 80px;
+        background-color: white;
+    }
+    
+    #formBG {
+        display: none;
+        background: black;
+        position: fixed;
+        height: 2000px;
+        width: 100%;
+        opacity: 80%;
+    }
+    
+    .btnForm{
+        display: flex;
+        width: 100%;
+        text-align: center;
+        flex-wrap: nowrap;
+        justify-content:space-evenly;
+    }
+    
+    .form-container input, .form-container textarea, .form-container select{
+        width: 80%;
+        margin: 20px;
+        height: 40px;
+        font-size: 20px;
+    }
+    
+    .form-container input:focus, .form-container textarea:focus, .form-container select:focus{
+        background: black;
+        color: goldenrod;
+    }
+    
+    .form-container textarea{
+        font-size: 18px;
+        min-height: 100px;
+        height: 100px;
+        padding: 5px;
+    }
+    
+    .form-container button{
+        background: black;
+        color: goldenrod;
+        width: 30%;
+        height: 40px;
+    }
+}
+
+@media  (min-width: 768px){
+    .form-container {
+        max-width: 30%;
+        min-width: 750px;
+        height: 100%;
+        padding: 10px;
+        background-color: white;
+        box-sizing: border-box;
+        margin-bottom: 80px;
+    }
+    
+    .updateForm {
+        max-width: 30%;
+        min-width: 750px;
+        height: 70%;
+        display: none;
+        position: fixed;
+        margin: 0 auto;
+        top: 120px;
+        border-radius: 3px;
+        border: 3px solid goldenrod;
+        overflow: hidden;
+        margin-bottom: 80px;
+        background-color: white;
+    }
+    
+    #formBG {
+        display: none;
+        background: black;
+        position: fixed;
+        height: 2000px;
+        width: 100%;
+        opacity: 80%;
+    }
+    
+    .btnForm{
+        display: flex;
+        width: 100%;
+        text-align: center;
+        flex-wrap: nowrap;
+        justify-content:space-evenly;
+    }
+    
+    .form-container input, .form-container textarea, .form-container select{
+        width: 80%;
+        margin: 20px;
+        height: 40px;
+        font-size: 20px;
+    }
+    
+    .form-container input:focus, .form-container textarea:focus, .form-container select:focus{
+        background: black;
+        color: goldenrod;
+    }
+    
+    .form-container textarea{
+        font-size: 18px;
+        min-height: 100px;
+        height: 100px;
+        padding: 5px;
+    }
+    
+    .form-container button{
+        background: black;
+        color: goldenrod;
+        width: 40%;
+        height: 50px;
+        font-size: 30px;
+    }
+}
