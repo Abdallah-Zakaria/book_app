@@ -1,0 +1,94 @@
+@media (max-width: 767px) {
+    .topnav {
+        overflow: hidden;
+        background-color: black;
+        position: relative;
+        width: 100%;
+        z-index: 9;
+    }
+    .topnav #myLinks {
+        display: none;
+        background-color: black;
+        border: solid gray 2px;
+        z-index: 9;
+    }
+    .topnav a {
+        color: white;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        display: block;
+        text-align: center;
+    }
+    .topnav p {
+        color: goldenrod;
+        font-size: 30px;
+        font-weight: bold;
+    }
+    .topnav a.icon {
+        background: black;
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    .active {
+        background-color: white;
+        color: black;
+    }
+    .active p {
+        color: black;
+    }
+}
+
+
+@media  (min-width: 768px){
+    .topnav {
+        overflow: hidden;
+        background-color: black;
+        position: relative;
+        width: 100%;
+        z-index: 9;
+    }
+    .topnav #myLinks {
+        display: none;
+        background-color: black;
+        border: solid gray 2px;
+        z-index: 9;
+    }
+    .topnav a {
+        color: white;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        display: block;
+        text-align: center;
+    }
+    .topnav p {
+        color: goldenrod;
+        font-size: 40px;
+        font-weight: bold;
+    }
+    .topnav a.icon {
+        background: black;
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    .active {
+        background-color: white;
+        color: black;
+    }
+    .active p {
+        color: black;
+    }
+}
